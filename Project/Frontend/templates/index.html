@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Basketball Player Stats</h1>
+        <img src="{{ url_for('static', filename='images/basketball.png') }}" alt="Basketball" class="logo">
+
+        <form method="POST">
+            <input type="text" name="player_name" placeholder="Enter player name" required>
+            <button type="submit">Get Stats</button>
+        </form>
+
+        {% if player_stats %}
+        <div class="stats">
+            <h2>Stats for {{ player_stats.name }}</h2>
+            <p>Points per Game: {{ player_stats.points }}</p>
+            <p>Rebounds per Game: {{ player_stats.rebounds }}</p>
+            <p>Assists per Game: {{ player_stats.assists }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
